@@ -6,12 +6,27 @@
 //
 
 import UIKit
+import WebKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var qrCodeBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        qrCodeBtn.layer.cornerRadius = 3.0
+        qrCodeBtn.layer.borderColor = UIColor.black.cgColor
+        qrCodeBtn.layer.borderWidth = 3
+        qrCodeBtn.addTarget(self, action: #selector(qrcodeRederLaunch), for: .touchUpInside)
+        
+        let url = URL(string: "https://naver.com")
+        let request = URLRequest(url: url!)
+        self.webView.load(request)
+        
+    }
+    @objc fileprivate func qrcodeRederLaunch() {
+        
     }
 
 
